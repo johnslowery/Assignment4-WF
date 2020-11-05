@@ -1,0 +1,39 @@
+<div class="container">
+    <form>
+        <div class="form-group">
+            <label>User ID: </label>
+            <input name="userId" [(ngModel)]="createdUser.userId" class="form-control" id="userId" required>
+            <small class="form-text text-muted">User name to log into the system</small>
+        </div>
+
+        <div class="form-group">
+            <label>First Name: </label>
+            <input name="firstName" [(ngModel)]="createdUser.firstName" class="form-control" id="firstName" required>
+            <small class="form-text text-muted">User's first name</small>
+        </div>
+
+        <div class="form-group">
+            <label>Last Name: </label>
+            <input name="lastName" [(ngModel)]="createdUser.lastName" class="form-control" id="lastName" required>
+            <small class="form-text text-muted">User's last name</small>
+        </div>
+
+        <div class="form-group">
+            <label>Email: </label>
+            <input name="emailAddress" [(ngModel)]="createdUser.emailAddress" class="form-control" id="emailAddress" required>
+            <small class="form-text text-muted">User's email address</small>
+        </div>
+
+        <div class="form-group">
+            <label>Password: </label>
+            <input name="password" [(ngModel)]="createdUser.password" type="password" class="form-control" id="password" required>
+            <small class="form-text text-muted">User's password to access their account</small>
+        </div>
+
+        <div *ngIf="errorMsg!==''" class="alert alert-danger" role="alert">
+            {{errorMsg}}
+        </div>
+
+        <input (click)="CreateNewUser()" class="btn btn-primary" type="submit">
+    </form>
+</div>

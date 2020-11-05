@@ -1,0 +1,21 @@
+<div class="container">
+    <form>
+        <div class="form-group">
+            <label>User ID: </label>
+            <input name="userId" [(ngModel)]="userId" class="form-control" id="userId" required>
+            <small class="form-text text-muted">User name to log into the system</small>
+        </div>
+
+        <div class="form-group">
+            <label>Password: </label>
+            <input name="password" [(ngModel)]="password" type="password" class="form-control" id="password" required>
+            <small class="form-text text-muted">User's password to access their account</small>
+        </div>
+
+        <div *ngIf="errorMsg!==''" class="alert alert-danger" role="alert">
+            {{errorMsg}}
+        </div>
+
+        <input (click)="Login()" class="btn btn-primary" type="submit">
+    </form>
+</div>

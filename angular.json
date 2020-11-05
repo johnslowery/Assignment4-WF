@@ -24,6 +24,7 @@
               "src/assets"
             ],
             "styles": [
+              "node_modules/bootstrap/dist/css/bootstrap.min.css",
               "src/styles.css"
             ],
             "scripts": []
@@ -119,6 +120,10 @@
           }
         }
       }
-    }},
-  "defaultProject": "Assignment4-WF"
+    }
+  },
+  "defaultProject": "Assignment4-WF",
+  "cli": {
+    "analytics": "7698860c-d1df-47f4-bffe-9554614ebc49"
+  }
 }
