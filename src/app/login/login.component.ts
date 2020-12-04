@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { AuthGuardService } from '../auth/services/auth-guard.service';
 import { UserService } from '../auth/services/user.service';
 
@@ -10,7 +10,7 @@ import { UserService } from '../auth/services/user.service';
 })
 export class LoginComponent implements OnInit {
 
-  constructor(private userService: UserService, private authGuardService: AuthGuardService, private activatedRoute: ActivatedRoute) { }
+  constructor(private router: Router, private userService: UserService, private authGuardService: AuthGuardService, private activatedRoute: ActivatedRoute) { }
   userId: string='';
   password: string='';
   errorMsg: string='';
@@ -22,7 +22,9 @@ export class LoginComponent implements OnInit {
   {
     this.userService.Login(this.userId, this.password).subscribe((returnedToken)=>{
       console.log(returnedToken);
-      this.authGuardService.SetUserLoggedIn(returnedToken);
+      this.authGuardService.SetUserLoggedIn(returnedToken.token);
+      alert("Login Successful!");
+      this.router.navigate(['/viewpost']);
       this.errorMsg ='';
     }, (error)=>{
       console.log(error);

@@ -1,7 +1,8 @@
 import { EventEmitter, Injectable, Output } from '@angular/core';
 import { ActivatedRouteSnapshot, CanActivate, Router, RouterStateSnapshot, UrlTree } from '@angular/router';
 import { Observable } from 'rxjs';
-import { ApiToken } from '../models/token.model';
+import { Token } from '../models/token.model';
+import jwt_decode from 'jwt-decode';
 
 @Injectable({
   providedIn: 'root'
@@ -19,8 +20,16 @@ export class AuthGuardService implements CanActivate {
     }
   }
 
-  SetUserLoggedIn(tokenAuth:ApiToken){
-    localStorage.setItem('AuthToken',JSON.stringify(tokenAuth));
+  SetUserLoggedIn(currentToken: string): void{
+    const decodedToken = jwt_decode<Token>(currentToken);
+    console.log(decodedToken);
+    const userToken = new Token();
+    userToken.token = currentToken;
+    userToken.UserData = decodedToken.UserData;
+    userToken.iat = decodedToken.iat;
+    userToken.exp = decodedToken.exp;
+    userToken.sub = decodedToken.sub;
+    localStorage.setItem('AuthToken', JSON.stringify(userToken));
     this.UserStateChanged.emit(true);
   }
 

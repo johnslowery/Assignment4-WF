@@ -10,6 +10,8 @@ import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { UserService } from './auth/services/user.service';
 import { SecretUserComponent } from './secret-user/secret-user.component';
+import { PostListComponent } from './post-list/post-list.component';
+import { CreatePostComponent } from './create-post/create-post.component';
 
 
 @NgModule({
@@ -18,7 +20,9 @@ import { SecretUserComponent } from './secret-user/secret-user.component';
     NavBarComponent,
     CreateUserComponent,
     LoginComponent,
-    SecretUserComponent
+    SecretUserComponent,
+    PostListComponent,
+    CreatePostComponent,
   ],
   imports: [
     BrowserModule,

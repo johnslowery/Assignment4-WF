@@ -1,17 +1,23 @@
 <nav class="navbar navbar-default">
     <div class="container-fluid">
       <div class="navbar-header">
-        <a class="navbar-brand" href="#">John Lowery's Super Cool Blog Website That Totally Works</a>
+        <a class="navbar-brand" [routerLink]="['/viewpost']">John Lowery's Super Cool Blog Website That Totally Works</a>
       </div>
       <ul class="nav navbar-nav">
         <li><a [routerLink]="['/secret']">Super Secret Stuff</a></li>
+      </ul>
+      <ul class="nav navbar-nav">
+        <li><a [routerLink]="['/viewpost']">View Posts</a></li>
+      </ul>
+      <ul class="nav navbar-nav">
+        <li *ngIf="userLoggedIn"><a [routerLink]="['/createpost']">Create a Post</a></li>
       </ul>
       <div class="navbar-right">
         <ul class="nav navbar-nav">
           <li *ngIf="!userLoggedIn"><a [routerLink]="['/login']">Login</a></li>
         </ul>
         <ul class="nav navbar-nav">
-          <li *ngIf="!userLoggedIn"><a [routerLink]="['/create']">Create Account</a></li>
+          <li *ngIf="!userLoggedIn"><a [routerLink]="['/createaccount']">Create Account</a></li>
         </ul>
         <ul class="nav navbar-nav">
           <li *ngIf="userLoggedIn"><a (click)="LogOutUser()">Log Out</a></li>
